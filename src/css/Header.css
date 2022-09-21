@@ -4,4 +4,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #4b5563;
+}
+
+header div {
+  width: 100%;
+}
+
+header div img {
+  width: 180px;
+}
+
+header input {
+  padding: 0.3rem 1rem;
+  width: 23%;
+  outline: 0;
+  border: 1px solid #4b5563;
+  border-radius: 16px;
 }
