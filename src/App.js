@@ -3,11 +3,32 @@ import { Header, CardContainer, DetailsCard } from "./components";
 import { getPokemon, getPokemonData, getAllPokemon } from "./utils";
 
 export default class App extends Component {
+    state = {
+    data: null,
+    error: null
+  }
+
+  componentDidMount() {
+    getAllPokemon()
+      .then((res) => {
+        this.setState({ data: res })
+      })
+  }
+
+  getSearchResults = (err, data) => {
+    // console.log(err);
+    if(err) this.setState({ error: err }) 
+    else this.setState({ error : err, data: data })
+  }
+
   render() {
+    const {data} = this.state;
+    const {error} = this.state;
+
     return (
       <div className="App">
-        <Header />
-        <CardContainer />
+        <Header getSearchResults = { this.getSearchResults }/> 
+        <CardContainer data = { data } error = { error }/>
         <DetailsCard />
       </div>
     );
