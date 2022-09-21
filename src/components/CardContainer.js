@@ -4,17 +4,17 @@ import { getAllPokemon } from "../utils";
 import { Card } from "./index";
 
 export default class CardContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-    data: props.data,
-    error: null
-   }
+      data: props.data,
+      error: null
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.data !== this.props.data) this.setState({ data : this.props.data})
-    if(prevProps.error !== this.props.error) this.setState({ error : this.props.error})
+    if (prevProps.data !== this.props.data) this.setState({ data: this.props.data })
+    if (prevProps.error !== this.props.error) this.setState({ error: this.props.error })
   }
 
   render() {
@@ -23,11 +23,11 @@ export default class CardContainer extends Component {
 
 
     if (!data) return <h1>Loading...</h1>;
-    if(error) return <p>{ error }</p>
+    if (error) return <p>{error}</p>
 
     return (
       <div className="container">
-        {data.map((ele) => <Card pokemon={ele} key={ele.id}/>)}
+        {data.map((ele) => <Card pokemon={ele} key={ele.id} onClick={() => { this.props.getId(ele.id) }} />)}
       </div>
     );
   }
