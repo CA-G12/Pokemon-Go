@@ -12,7 +12,7 @@ export default class Card extends Component {
   render() {
     const { pokemon } = this.state;
     return (
-      <div className="cards" key={pokemon.id} onClick={this.props.onClick}>
+      <div className="cards" onClick={this.props.onClick}>
         <img src={pokemon.sprites.other.dream_world.front_default} alt="" />
         <h1>{pokemon.name}</h1>
         <span>Weight: {pokemon.weight}</span>
