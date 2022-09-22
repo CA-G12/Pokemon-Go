@@ -22,8 +22,8 @@ export default class CardContainer extends Component {
     const { error } = this.state;
 
 
-    if (!data) return <h1>Loading...</h1>;
-    if (error) return <p>{error}</p>
+    if (!data) return <h1 className="loading">Loading...</h1>;
+    if (error) return <p className="error">{error}</p>
 
     return (
       <div className="container">
