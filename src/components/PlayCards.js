@@ -6,22 +6,22 @@ export default class PlayCards extends Component {
   constructor() {
     super()
     this.state = {
-      data: [],
+      data: null,
     }
   }
 
-  componentDidMount() {
-    getPokemonData("https://api.pokemontcg.io/v2/cards")
-      .then(res => this.setState({ data: res.data }));
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data !== this.props.data) this.setState({ data: this.props.data })
   }
 
   render() {
     const { data } = this.state;
-    console.log(data);
+    if(!data) return <h1 className="loading">LOADING ...</h1>
+
     return <div className="container">
       {data.map((card) => {
         return (
-          <div className="play-card">
+          <div className="play-card" key={card.id}>
             <img src={card.images.small} alt="" />
           </div>
         )

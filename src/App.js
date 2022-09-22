@@ -5,6 +5,7 @@ import { getPokemon, getPokemonData, getAllPokemon } from "./utils";
 export default class App extends Component {
   state = {
     data: null,
+    cardsData: null,
     error: null,
     id: 0,
     displayCards: true,
@@ -15,17 +16,32 @@ export default class App extends Component {
   componentDidMount() {
     getAllPokemon().then((res) => {
       this.setState({ data: res });
-    });
+    })
   }
 
-  getSearchResults = (err, data) => {
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.displayPlayCards !== this.state.displayPlayCards){
+     getPokemonData("https://api.pokemontcg.io/v2/cards")
+      .then(res => this.setState({ cardsData: res.data }));
+    }
+  }
+  
+
+  getSearchResults = (err, pokeData, cardsData) => {
     if (err) this.setState({ error: err });
     else
       this.setState({
         error: err,
-        data: data,
-        displayCards: true,
-        displayPokemon: false,
+        data: pokeData,
+        cardsData: cardsData
+      }, () => {
+        if(this.state.displayPokemon === true){
+          this.setState({
+            displayPokemon: false,
+            displayCards: true,
+            displayPlayCards: false
+          })
+        }
       });
   };
 
@@ -52,8 +68,8 @@ export default class App extends Component {
   };
 
   render() {
-    const { data } = this.state;
-    const { error } = this.state;
+    const { data, error, cardsData } = this.state;
+
     return (
       <div className="App">
         <Header
@@ -70,7 +86,7 @@ export default class App extends Component {
             closeDetailsCard={this.closeDetailsCard}
           />
         )}
-        {this.state.displayPlayCards && <PlayCards />}
+        {this.state.displayPlayCards && <PlayCards data={ cardsData }/>}
       </div>
     );
   }

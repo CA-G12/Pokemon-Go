@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "../css/Header.css"
-import { getAllPokemon, getPokemon } from "../utils";
+import { getAllPokemon, getPokemon, getPokemonData } from "../utils";
 
 export default class Header extends Component {
   constructor(props) {
@@ -8,6 +8,7 @@ export default class Header extends Component {
 
     this.state = {
       data: null,
+      cardsData: [],
       filteredData: []
     }
   }
@@ -16,7 +17,9 @@ export default class Header extends Component {
     getAllPokemon()
       .then((res) => {
         this.setState({ data: res })
+        return getPokemonData("https://api.pokemontcg.io/v2/cards")
       })
+      .then(res => this.setState({ cardsData: res.data }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -26,25 +29,24 @@ export default class Header extends Component {
 
   handleSearch = (e) => {
     const { getSearchResults } = this.props
-    const { data } = this.state;
+    const { data, cardsData } = this.state;
 
     const filteredData = data.filter((ele) => ele.name.includes(e.target.value))
+    const filteredCards = cardsData.filter((ele) => ele.name.toLowerCase().includes(e.target.value))
+
     if (!filteredData.length) {
       getPokemon(e.target.value)
         .then((res) => {
-          getSearchResults(null, [res])
+          getSearchResults(null, [res], filteredCards)
         })
         .catch((err) => {
-          getSearchResults(err.message, null)
+          getSearchResults(err.message, null, null)
         })
     }
-    getSearchResults(null, filteredData)
+    getSearchResults(null, filteredData, filteredCards)
   }
 
   render() {
-    const { data } = this.state;
-
-    if (!data) return <div>Loading...</div>
     return (
       <header>
         <div>
