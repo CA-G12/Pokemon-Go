@@ -24,6 +24,7 @@ export default class DetailsCard extends Component {
     if (data) {
       return (
         <div className="details">
+          <i className="fa-solid fa-circle-xmark"></i>
           <div className="pokemon-img">
             <img src={data.sprites.other.dream_world.front_default} alt="" />
           </div>
