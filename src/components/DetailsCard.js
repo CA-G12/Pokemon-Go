@@ -20,11 +20,10 @@ export default class DetailsCard extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data);
     if (data) {
       return (
         <div className="details">
-          <i className="fa-solid fa-circle-xmark"></i>
+          <i className="fa-solid fa-circle-xmark" onClick={this.props.closeDetailsCard}></i>
           <div className="pokemon-img">
             <img src={data.sprites.other.dream_world.front_default} alt="" />
           </div>
@@ -44,19 +43,19 @@ export default class DetailsCard extends Component {
             <div className="box">
               <h3>{Object.keys(data.sprites.versions)[0]}</h3>
               <div className="generation-imgs">
-                {Object.values(data.sprites.versions['generation-i']['red-blue']).map((e) => <img src={e} alt="" />)}
+                {Object.values(data.sprites.versions['generation-i']['red-blue']).map((e, i) => <img src={e} alt="" key={i}/>)}
               </div>
             </div>
             <div className="box">
               <h3>{Object.keys(data.sprites.versions)[1]}</h3>
               <div className="generation-imgs">
-                {Object.values(data.sprites.versions['generation-ii']['crystal']).map((e) => <img src={e} alt="" />)}
+                {Object.values(data.sprites.versions['generation-ii']['crystal']).map((e,i) => <img src={e} alt="" key={i}/>)}
               </div>
             </div>
             <div className="box">
               <h3>{Object.keys(data.sprites.versions)[2]}</h3>
               <div className="generation-imgs">
-                {Object.values(data.sprites.versions['generation-iii']['emerald']).map((e) => <img src={e} alt="" />)}
+                {Object.values(data.sprites.versions['generation-iii']['emerald']).map((e,i) => <img src={e} alt="" key={i}/>)}
               </div>
             </div>
           </div>

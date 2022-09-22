@@ -7,6 +7,8 @@ export default class App extends Component {
     data: null,
     error: null,
     id: 0,
+    displayCards: true,
+    displayPokemon: false
   }
 
   componentDidMount() {
@@ -17,24 +19,28 @@ export default class App extends Component {
   }
 
   getSearchResults = (err, data) => {
-    // console.log(err);
     if (err) this.setState({ error: err })
-    else this.setState({ error: err, data: data })
+    else this.setState({ error: err, data: data, displayCards: true, displayPokemon: false })
   }
 
   getId = (id) => {
-    this.setState({ id: id });
+    this.setState({ displayPokemon: true }, () =>{
+      this.setState({ id: id, displayCards: false });
+    })
+  }
+
+  closeDetailsCard = () =>{
+    this.setState({ displayCards: true, displayPokemon: false });
   }
 
   render() {
     const { data } = this.state;
     const { error } = this.state;
-
     return (
       <div className="App">
         <Header getSearchResults={this.getSearchResults} />
-        <CardContainer data={data} error={error} getId={this.getId} />
-        <DetailsCard id={this.state.id} />
+       {this.state.displayCards && <CardContainer data={data} error={error} getId={this.getId} /> }
+       {this.state.displayPokemon && <DetailsCard id={this.state.id} closeDetailsCard={this.closeDetailsCard}/>}
       </div>
     );
   }

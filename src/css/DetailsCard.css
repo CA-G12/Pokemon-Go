@@ -7,14 +7,14 @@
 }
 
 .details {
-  height: 85vh;
+  height: 80vh;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 10px solid #4B5563;
   border-radius: 16px;
-  margin: 3rem 8rem;
+  margin: 1.5rem 8rem;
   padding: 1.5rem 2rem;
 }
 
@@ -87,4 +87,12 @@
 .weight,
 .stats {
   font-weight: 800;
+}
+
+
+.error{
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Bungee Spice', cursive;
 }
