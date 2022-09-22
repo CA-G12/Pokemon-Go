@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Pokemon-Go/static/css/main.75f0de4d.css",
+    "main.js": "/Pokemon-Go/static/js/main.db2c21e8.js",
+    "static/js/787.91fd401c.chunk.js": "/Pokemon-Go/static/js/787.91fd401c.chunk.js",
+    "index.html": "/Pokemon-Go/index.html",
+    "main.75f0de4d.css.map": "/Pokemon-Go/static/css/main.75f0de4d.css.map",
+    "main.db2c21e8.js.map": "/Pokemon-Go/static/js/main.db2c21e8.js.map",
+    "787.91fd401c.chunk.js.map": "/Pokemon-Go/static/js/787.91fd401c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75f0de4d.css",
+    "static/js/main.db2c21e8.js"
+  ]
+}
