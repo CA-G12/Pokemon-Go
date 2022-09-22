@@ -50,7 +50,7 @@ export default class Header extends Component {
     return (
       <header>
         <div>
-          <img src="../../logo.png" alt="" />
+          <img src="https://i.ibb.co/Y8H41fw/logo.png" alt="" />
         </div>
         <div className="switch">
           <button onClick={this.props.closeDetailsCard}>Pokemon</button>
