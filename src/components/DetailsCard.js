@@ -30,15 +30,15 @@ export default class DetailsCard extends Component {
           <div className="pokemon-details">
             <div className="box">
               <h3>{data.name}</h3>
-              <span>Abilities:</span> <span>{data.abilities.map((e) => e.ability.name).join(', ')}</span>
+              <span className="ability">Abilities:</span> <span>{data.abilities.map((e) => e.ability.name).join(', ')}</span>
               <br />
-              <span>Height:</span> <span>{data.height}</span>
+              <span className="height">Height:</span> <span>{data.height}</span>
               <br />
-              <span>Weight:</span> <span>{data.weight}</span>
+              <span className="weight">Weight:</span> <span>{data.weight}</span>
               <br />
-              <span>Moves:</span> <span>{data.moves.slice(0, 5).map((e) => e.move.name).join(', ')}</span>
+              <span className="moves">Moves:</span> <span>{data.moves.slice(0, 5).map((e) => e.move.name).join(', ')}</span>
               <br />
-              <span>Stats:</span> <span>{data.stats.slice(0, 5).map((e) => e.stat.name).join(', ')}</span>
+              <span className="stats">Stats:</span> <span>{data.stats.slice(0, 5).map((e) => e.stat.name).join(', ')}</span>
             </div>
             <div className="box">
               <h3>{Object.keys(data.sprites.versions)[0]}</h3>
