@@ -14,9 +14,10 @@ header {
   align-items: center;
   padding: 0.5rem 1rem;
   background-color: #4b5563;
+  box-shadow: 0 1px 4px #212121;
 }
 
-header div {
+header {
   width: 100%;
 }
 
@@ -26,8 +27,23 @@ header div img {
 
 header input {
   padding: 0.3rem 1rem;
-  width: 23%;
+  width: 25%;
   outline: 0;
   border: 1px solid #4b5563;
   border-radius: 16px;
+}
+
+
+.switch button {
+  background-color: white;
+  outline: 0;
+  border: 1px solid #b6b9bd;
+  color: #4b5563;
+  padding: 0.4rem 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  font-size: 1rem;
 }
